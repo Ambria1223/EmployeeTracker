@@ -28,7 +28,7 @@
     "iconv-lite": "^0.4.24",
     "ieee754": "^1.2.1",
     "inherits": "^2.0.4",
-    "inquirer": "^8.2.5",
+    "inquirer": "^8.2.4",
     "is-interactive": "^2.0.0",
     "is-unicode-supported": "^1.3.0",
     "isarray": "^1.0.0",
@@ -77,6 +77,5 @@
     "url": "https://github.com/Ambria1223/Employee-Tracker/issues"
   },
   "homepage": "https://github.com/Ambria1223/Employee-Tracker#readme",
-  "devDependencies": {},
   "description": ""
 }
