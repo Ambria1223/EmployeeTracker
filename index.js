@@ -24,7 +24,8 @@ inquirer.prompt({
       'Add Employee',
       'Remove Employee',
       'Update Employee Role',
-      'Update Employee Manager'
+      'Update Employee Manager',
+      'Quit'
     ]
   })
   .then(answer => {
@@ -53,21 +54,28 @@ inquirer.prompt({
     }
   });
   
-  
-  function viewAllEmployees() {
-    connection.query('SELECT * FROM employees', (err, res) => {
-      if (err) throw err;
-      console.table(res);
-    });
-  }
-  
+    function viewAllEmployees() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'employee',
+        choices: ['Lisa Barren', 'Mack Johnson', 'Dean Jackson', 'Cameron Willard','Herbert Moreland']
+    })
+      
+    .then(answer => {
+      connection.query('SELECT * FROM employee',[answer.employee], (err, res) => {
+        if (err) throw err;
+        console.table(res);
+      }); 
+    })
+
+  } 
   function viewEmployeesByDepartment() {
     
     inquirer.prompt({
       name: 'department',
       type: 'list',
       message: 'Which department would you like to view?',
-      choices: ['Sales', 'Engineering', 'Finance', 'Legal']
+      choices: ['Administration', 'Marketing', 'Human Resources', 'Sales','Customer Service']
     })
     .then(answer => {
       connection.query('SELECT * FROM employees WHERE department = ?', [answer.department], (err, res) => {
@@ -83,7 +91,7 @@ inquirer.prompt({
       name: 'manager',
       type: 'list',
       message: 'Which manager would you like to view?',
-      choices: ['John Doe', 'Jane Doe', 'Mike Smith']
+      choices: ['Lisa Barren', 'Mack Johnson', 'Dean Jackson','Cameron Willard','Herbert Moreland']
     })
     .then(answer => {
       connection.query('SELECT * FROM employees WHERE manager = ?', [answer.manager], (err, res) => {
@@ -94,20 +102,5 @@ inquirer.prompt({
   }
 
   
-
-    inquirer
-      .prompt([
-      {
-        type: 'input',
-        name: 'first_name',
-        message: "What is the employee's first name?",
-      },
-      {
-        type: 'input',
-        name: 'last_name',
-        message: "What is the employee's last name?",
-      },
-    ]);
-
     
       

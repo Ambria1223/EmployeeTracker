@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS employeeinfo;
 CREATE DATABASE employeeinfo;
 
-USE employeeinfo_db;
+USE employeeinfo;
 
 CREATE TABLE department (
   id INT PRIMARY KEY,
@@ -12,13 +12,13 @@ CREATE TABLE department (
 CREATE TABLE role (
     id INT PRIMARY KEY,
     title VARCHAR(30),
-    salary DECIMAL(5,2),
+    salary DECIMAL(9,2),
     department_id INT
 
 
 );
 
-Select * from employee (
+CREATE TABLE employee (
     id INT PRIMARY KEY,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
